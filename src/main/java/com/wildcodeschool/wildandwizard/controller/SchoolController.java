@@ -20,7 +20,7 @@ public class SchoolController {
     }
 
     @GetMapping("/school")
-    public String getById(Model model, @RequestParam Long id) {
+    public String getById(Model model, @RequestParam(required=false, defaultValue="%") Long id) {
 
         model.addAttribute("school", repository.findById(id));
 
@@ -28,7 +28,7 @@ public class SchoolController {
     }
 
     @GetMapping("/schools/search")
-    public String getByCountry(Model model, @RequestParam String country) {
+    public String getByCountry(Model model, @RequestParam(required=false, defaultValue="%") String country) {
 
         model.addAttribute("schools", repository.findByCountry(country));
 
